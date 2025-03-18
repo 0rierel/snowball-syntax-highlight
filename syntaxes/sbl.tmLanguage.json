@@ -1,0 +1,71 @@
+{
+  "scopeName": "source.sbl",
+  "name": "Snowball",
+  "patterns": [
+    { "include": "#comments" },
+    { "include": "#keywords" },
+    { "include": "#strings" },
+    { "include": "#numbers" },
+    { "include": "#stringdef" },
+    {
+      "name": "variable.other.braced.sbl",
+      "match": "\\{[^\\}]+\\}"
+    }
+  ],
+  "repository": {
+    "comments": {
+      "patterns": [
+        {
+          "name": "comment.block.sbl",
+          "begin": "/\\*",
+          "end": "\\*/",
+          "patterns": []
+        },
+        {
+          "name": "comment.line.double-slash.sbl",
+          "match": "//.*$"
+        }
+      ]
+    },
+    "stringdef": {
+      "name": "constant.character.sbl.stringdef",
+      "match": "\\{[a-z]+(')?\\}"
+    },
+    "keywords": {
+      "patterns": [
+        {
+          "name": "keyword.control.sbl",
+          "match": "\\b(routines|externals|integers|groupings|stringescapes|stringdef|define|as|do|repeat|goto|among|not|setmark|test|try|limit|cursor|sizeof|backwards|true|false|or)\\b"
+        }
+      ]
+    },
+    "strings": {
+      "patterns": [
+        {
+          "name": "string.quoted.double.sbl",
+          "begin": "\"",
+          "end": "\"",
+          "patterns": [
+            {
+              "name": "constant.character.escape.sbl",
+              "match": "\\\\."
+            }
+          ]
+        },
+        {
+          "name": "string.quoted.single.sbl",
+          "begin": "'",
+          "end": "'"
+        }
+      ]
+    },
+    "numbers": {
+      "patterns": [
+        {
+          "name": "constant.numeric.sbl",
+          "match": "\\b\\d+\\b"
+        }
+      ]
+    }
+  }
+}

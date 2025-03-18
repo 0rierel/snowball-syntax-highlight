@@ -1,0 +1,31 @@
+{
+    "name": "sbl-syntax",
+    "displayName": "SBL Syntax",
+    "description": "A simple syntax highlighter for the Snowball (SBL) language.",
+    "version": "0.0.1",
+    "publisher": "Ori Erel",
+    "engines": {
+      "vscode": "^1.60.0"
+    },
+    "categories": [
+      "Programming Languages"
+    ],
+    "contributes": {
+      "languages": [
+        {
+          "id": "sbl",
+          "aliases": ["SBL", "sbl"],
+          "extensions": [".sbl"],
+          "configuration": "./language-configuration.json"
+        }
+      ],
+      "grammars": [
+        {
+          "language": "sbl",
+          "scopeName": "source.sbl",
+          "path": "./syntaxes/sbl.tmLanguage.json"
+        }
+      ]
+    }
+  }
+  

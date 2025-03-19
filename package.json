@@ -2,7 +2,7 @@
   "name": "sbl-syntax",
   "displayName": "SBL Syntax Highlighter",
   "description": "A simple syntax highlighter for the Snowball (SBL) language.",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "publisher": "OriErel",
   "engines": {
     "vscode": "^1.60.0"

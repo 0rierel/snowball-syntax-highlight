@@ -3,14 +3,11 @@
   "name": "Snowball",
   "patterns": [
     { "include": "#comments" },
+    { "include": "#stringdefIdentifier" },
+    { "include": "#defineGrouping" },
     { "include": "#keywords" },
     { "include": "#strings" },
-    { "include": "#numbers" },
-    { "include": "#stringdef" },
-    {
-      "name": "variable.other.braced.sbl",
-      "match": "\\{[^\\}]+\\}"
-    }
+    { "include": "#numbers" }
   ],
   "repository": {
     "comments": {
@@ -27,15 +24,38 @@
         }
       ]
     },
-    "stringdef": {
-      "name": "constant.character.sbl.stringdef",
-      "match": "\\{[a-z]+(')?\\}"
+    "defineGrouping": {
+      "name": "meta.definition.grouping.sbl",
+      "begin": "^(\\bdefine\\b)\\s+([A-Za-z0-9']+)\\s+(')",
+      "beginCaptures": {
+        "1": { "name": "keyword.control.sbl" },
+        "2": { "name": "variable.other.sbl.identifier" },
+        "3": { "name": "punctuation.definition.string.begin.sbl" }
+      },
+      "end": "(')",
+      "endCaptures": {
+        "1": { "name": "punctuation.definition.string.end.sbl" }
+      },
+      "patterns": [
+        {
+          "name": "constant.character.sbl.grouping.embedded",
+          "match": "(\\{[^\\}]+\\})"
+        },
+        {
+          "name": "string.quoted.single.sbl.content",
+          "match": "[^\\{']+"
+        }
+      ]
+    },
+    "stringdefIdentifier": {
+      "name": "meta.definition.stringdef.sbl",
+      "match": "(?<=\\bstringdef\\s)(\\S+)"
     },
     "keywords": {
       "patterns": [
         {
           "name": "keyword.control.sbl",
-          "match": "\\b(routines|externals|integers|groupings|stringescapes|stringdef|define|as|do|repeat|goto|among|not|setmark|test|try|limit|cursor|sizeof|backwards|true|false|or)\\b"
+          "match": "\\b(as|do|or|and|for|get|hex|hop|len|non|not|set|try|fail|goto|loop|next|size|test|true|among|false|lenof|limit|unset|atmark|attach|cursor|define|delete|gopast|insert|maxint|minint|repeat|sizeof|tomark|atleast|atlimit|decimal|reverse|setmark|strings|tolimit|booleans|integers|routines|setlimit|backwards|externals|groupings|stringdef|substring|backwardmode|stringescapes)\\b"
         }
       ]
     },
@@ -49,13 +69,49 @@
             {
               "name": "constant.character.escape.sbl",
               "match": "\\\\."
+            },
+            {
+              "name": "meta.embedded.brace.sbl",
+              "begin": "\\{",
+              "end": "\\}",
+              "patterns": [
+                {
+                  "name": "constant.character.sbl",
+                  "match": "[^\\}]+"
+                }
+              ]
+            },
+            {
+              "name": "string.quoted.single.sbl.content",
+              "match": "[^'\\{]+"
             }
           ]
         },
         {
           "name": "string.quoted.single.sbl",
           "begin": "'",
-          "end": "'"
+          "end": "'",
+          "patterns": [
+            {
+              "name": "constant.character.escape.sbl",
+              "match": "\\\\."
+            },
+            {
+              "name": "meta.embedded.brace.sbl",
+              "begin": "\\{",
+              "end": "\\}",
+              "patterns": [
+                {
+                  "name": "constant.character.sbl",
+                  "match": "[^\\}]+"
+                }
+              ]
+            },
+            {
+              "name": "string.quoted.single.sbl.content",
+              "match": "[^'\\{]+"
+            }
+          ]
         }
       ]
     },

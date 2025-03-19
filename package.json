@@ -3,15 +3,12 @@
   "displayName": "SBL Syntax Highlighter",
   "description": "A simple syntax highlighter for the Snowball (SBL) language.",
   "version": "0.0.1",
-  "publisher": "Ori Erel",
+  "publisher": "OriErel",
   "engines": {
     "vscode": "^1.60.0"
   },
   "categories": [
     "Programming Languages"
-  ],
-  "activationEvents": [
-    "onLanguage:sbl"
   ],
   "keywords": [
     "syntax",

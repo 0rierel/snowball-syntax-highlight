@@ -19,12 +19,12 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/0rierel/snowball-syntex-highlight"
+    "url": "https://github.com/0rierel/snowball-syntax-highlight"
   },
   "bugs": {
-    "url": "https://github.com/0rierel/snowball-syntex-highlight/issues"
+    "url": "https://github.com/0rierel/snowball-syntax-highlight/issues"
   },
-  "homepage": "https://github.com/0rierel/snowball-syntex-highlight",
+  "homepage": "https://github.com/0rierel/snowball-syntax-highlight",
   "contributes": {
     "languages": [
       {

@@ -26,7 +26,7 @@
     },
     "defineGrouping": {
       "name": "meta.definition.grouping.sbl",
-      "begin": "^(\\bdefine\\b)\\s+([A-Za-z0-9']+)\\s+(')",
+      "begin": "^(\\bdefine\\b)\\s+([A-Za-z][A-Za-z0-9_])\\s+(?='|[A-Za-z])",
       "beginCaptures": {
         "1": { "name": "keyword.control.sbl" },
         "2": { "name": "variable.other.sbl.identifier" },
@@ -51,6 +51,7 @@
       "name": "meta.definition.stringdef.sbl",
       "match": "(?<=\\bstringdef\\s)(\\S+)"
     },
+   
     "keywords": {
       "patterns": [
         {
@@ -61,32 +62,6 @@
     },
     "strings": {
       "patterns": [
-        {
-          "name": "string.quoted.double.sbl",
-          "begin": "\"",
-          "end": "\"",
-          "patterns": [
-            {
-              "name": "constant.character.escape.sbl",
-              "match": "\\\\."
-            },
-            {
-              "name": "meta.embedded.brace.sbl",
-              "begin": "\\{",
-              "end": "\\}",
-              "patterns": [
-                {
-                  "name": "constant.character.sbl",
-                  "match": "[^\\}]+"
-                }
-              ]
-            },
-            {
-              "name": "string.quoted.single.sbl.content",
-              "match": "[^'\\{]+"
-            }
-          ]
-        },
         {
           "name": "string.quoted.single.sbl",
           "begin": "'",
